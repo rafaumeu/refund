@@ -59,6 +59,7 @@ function expenseAdd(newExpense) {
     expenseItem.append(expenseIcon, expenseInfo, expenseAmount, removeIcon);
     expenseList.append(expenseItem)
     updateTotals();
+    formClear();
   } catch (error) {
     alert("Não foi possível atualizar a lista de despesas.")
     console.log(error)
@@ -97,3 +98,10 @@ expenseList.addEventListener("click", (event) => {
   }
   updateTotals()
 })
+
+function formClear () {
+  expense.textContent = ""
+  amount.value = ""
+  category.value = ""
+  expense.focus()
+}
