@@ -40,15 +40,8 @@ function expenseAdd(newExpense) {
     expenseIcon.setAttribute("alt", newExpense.category_name);
     const expenseInfo = document.createElement("div");
     expenseInfo.classList.add("expense-info");
-    const expenseName = document.createElement("strong");
-    expenseName.textContent = newExpense.expense;
-    const expenseCategory = document.createElement("span");
-    expenseCategory.textContent = newExpense.category_name;
-    const expenseAmount = document.createElement("span");
-    expenseAmount.classList.add("expense-amount");
-    expenseAmount.textContent = formatCurrencyBRL(newExpense.amount);
-    expenseInfo.append(expenseName, expenseCategory);
-    expenseItem.append(expenseIcon, expenseInfo)    
+    expenseItem.append(expenseIcon)
+    expenseItem.append(expenseInfo)
     expenseList.append(expenseItem)
 
   } catch (error) {
