@@ -72,14 +72,18 @@ function updateTotals() {
     let total = 0
     for (let item = 0; item < items.length; item++) {
       const itemAmount = items[item].querySelector(".expense-amount")
-      let value = itemAmount.textContent.replace(/[^\d]/g, "").replace(",", ".")  
+      let value = itemAmount.textContent.replace(/[^\d,]/g, "").replace(",", ".")  
       value = parseFloat(value)
       if(isNaN(value)){
         return alert("Não foi possível calcular o total. O valor não parece ser um número.")
       }
       total += Number(value)
     }
-    expensesTotal.textContent = total
+    const symbolBRL = document.createElement("small")
+    symbolBRL.textContent = "R$"
+    total = formatCurrencyBRL(total).toUpperCase().replace("R$", "")
+    expensesTotal.innerHTML = ""
+    expensesTotal.append(symbolBRL, total)
   } catch (error) {
     console.log(error)
     alert("Não foi possível atualizar os totais.")
