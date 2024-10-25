@@ -40,8 +40,13 @@ function expenseAdd(newExpense) {
     expenseIcon.setAttribute("alt", newExpense.category_name);
     const expenseInfo = document.createElement("div");
     expenseInfo.classList.add("expense-info");
-    expenseItem.append(expenseIcon)
-    expenseItem.append(expenseInfo)
+    const expenseName = document.createElement("strong");
+    expenseName.textContent = newExpense.expense;
+    const expenseCategory = document.createElement("span");
+    expenseCategory.textContent = newExpense.category_name;
+
+    expenseInfo.append(expenseName, expenseCategory);
+    expenseItem.append(expenseIcon, expenseInfo);
     expenseList.append(expenseItem)
 
   } catch (error) {
